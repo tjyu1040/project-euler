@@ -13,4 +13,3 @@ About page:
 > in a fun and recreational context.
 
 [project-euler]: https://projecteuler.net/about
-

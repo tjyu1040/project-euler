@@ -12,8 +12,12 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pre-commit",
-    "ruff"
+    "pre-commit>=4.3.0",
+    "ruff>=0.14.1",
+]
+test = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
 ]
 
 [tool.setuptools_scm]
@@ -33,4 +37,10 @@ docstring-code-line-length = "dynamic"
 [tool.ruff.lint]
 extend-select = [
     "I"  # isort
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "--durations=25"
 ]
