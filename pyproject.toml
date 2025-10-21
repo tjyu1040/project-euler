@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=80", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "euler"
+dynamic = ["version"]
+requires-python = ">= 3.14"
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "ruff"
+]
+
+[tool.setuptools_scm]
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint]
+extend-select = [
+    "I"  # isort
+]
