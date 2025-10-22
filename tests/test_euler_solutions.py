@@ -13,10 +13,12 @@ EXPECTED_ANSWERS = {
     8: 23514624000,
     9: 31875000,
     10: 142913828922,
+    11: 70600674,
+    12: 76576500,
 }
 
 
-@pytest.mark.parametrize("problem_number", EXPECTED_ANSWERS.keys(), ids=lambda s: f"problem_{s:04}")
+@pytest.mark.parametrize("problem_number", EXPECTED_ANSWERS.keys(), ids=lambda s: f"Problem {s:04}")
 def test_euler_solutions(problem_number: int):
     module = importlib.import_module(f"euler.p{problem_number:04}")
     answer = str(module.solve())
