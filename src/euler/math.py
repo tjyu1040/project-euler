@@ -1,4 +1,4 @@
-from math import sqrt
+from math import factorial, sqrt
 
 
 def is_prime_number(n: int) -> bool:
@@ -53,3 +53,18 @@ def find_prime_factors(n: int) -> list[int]:
         prime_factors.append(n)
 
     return sorted(prime_factors)
+
+
+def binomial_coefficient(n: int, k: int) -> int:
+    """
+    The binomial coefficient (`n`, `k`) is the number of ways of picking `k` unordered outcomes from
+    `n` possibilities, also known as a combination or combinatorial number.
+    :param n: The non-negative number of possible outcomes.
+    :param k: The non-negative number of unordered outcomes to pick.
+    :return: The binomial coefficient.
+    """
+    if n < 0:
+        raise ValueError("n must be a non-negative integer.")
+    if k < 0:
+        raise ValueError("k must be a non-negative integer.")
+    return factorial(n) // (factorial(k) * factorial(n - k))

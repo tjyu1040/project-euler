@@ -1,6 +1,6 @@
 import pytest
 
-from euler.math import find_prime_factors, is_prime_number
+from euler.math import binomial_coefficient, find_prime_factors, is_prime_number
 
 
 def integer_id(integer: int) -> str:
@@ -37,3 +37,21 @@ def test_find_prime_factors():
     assert find_prime_factors(8) == [2, 2, 2]
     assert find_prime_factors(9) == [3, 3]
     assert find_prime_factors(10) == [2, 5]
+
+
+def test_invalid_arguments_binomial_coefficient():
+    with pytest.raises(ValueError):
+        binomial_coefficient(-1, 0)
+
+    with pytest.raises(ValueError):
+        binomial_coefficient(0, -1)
+
+
+def test_binomial_coefficient():
+    assert binomial_coefficient(0, 0) == 1
+    assert binomial_coefficient(1, 1) == 1
+    assert binomial_coefficient(2, 2) == 1
+    assert binomial_coefficient(3, 2) == 3
+    assert binomial_coefficient(4, 2) == 6
+    assert binomial_coefficient(4, 3) == 4
+    assert binomial_coefficient(10, 2) == 45
