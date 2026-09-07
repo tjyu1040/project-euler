@@ -36,15 +36,13 @@ def solve():
     for row_index in range(grid.shape[0]):
         row = grid[row_index]
         max_row_product = get_max_product_of_4_adj_elements_in_array(row)
-        if max_row_product > max_product:
-            max_product = max_row_product
+        max_product = max(max_product, max_row_product)
 
     # Check columns.
     for col_index in range(grid.shape[1]):
         col = grid[:, col_index]
         max_col_product = get_max_product_of_4_adj_elements_in_array(col)
-        if max_col_product > max_product:
-            max_product = max_col_product
+        max_product = max(max_product, max_col_product)
 
     # Check diagonals.
     grid_length = grid.shape[0]
@@ -53,10 +51,8 @@ def solve():
         reverse_diagonal = np.diagonal(np.fliplr(grid), offset=diagonal_index)
         max_diagonal_product = get_max_product_of_4_adj_elements_in_array(diagonal)
         max_reverse_diagonal_product = get_max_product_of_4_adj_elements_in_array(reverse_diagonal)
-        if max_diagonal_product > max_product:
-            max_product = max_diagonal_product
-        if max_reverse_diagonal_product > max_product:
-            max_product = max_reverse_diagonal_product
+        max_product = max(max_product, max_diagonal_product)
+        max_product = max(max_product, max_reverse_diagonal_product)
 
     return max_product
 
@@ -68,8 +64,7 @@ def get_max_product_of_4_adj_elements_in_array(array: np.ndarray) -> int:
         max_product = 0
         for i in range(len(array) - 3):
             product = np.prod(array[i : i + 4])
-            if product > max_product:
-                max_product = product
+            max_product = max(max_product, product)
         return max_product
 
 
